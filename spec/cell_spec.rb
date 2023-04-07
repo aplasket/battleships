@@ -59,7 +59,7 @@ RSpec.describe Cell do
   end
 
   describe '#render' do
-    xit 'will return "." if the cell has not been fired upon' do
+    it 'will return "." if the cell has not been fired upon' do
       expect(@cell_1.render).to eq('.')
     end
 
@@ -71,6 +71,7 @@ RSpec.describe Cell do
 
     it 'return S when passing in true boolean' do
       @cell_2.place_ship(@cruiser)
+      require 'pry'; binding.pry
       expect(@cell_2.render).to eq(".")
       expect(@cell_2.render(true)).to eq("S")
     end

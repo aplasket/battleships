@@ -27,8 +27,8 @@ class Cell
   def fire_upon
     if @ship
       @ship.hit
-      @fired_upon = true
     end
+    @fired_upon = true
   end
 
   def render (argument = false)
