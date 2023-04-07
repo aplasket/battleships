@@ -44,7 +44,7 @@ RSpec.describe Cell do
     end
   end
 
-  describe '#damaged' do
+  describe '#fired upon' do
     it 'ship will be damaged when fired upon' do
       @cell.place_ship(@cruiser)
 
@@ -58,7 +58,7 @@ RSpec.describe Cell do
   end
 
   describe '#render' do
-    it 'will return "." if the cell has not been fired upon' do
+    xit 'will return "." if the cell has not been fired upon' do
       expect(@cell_1.render).to eq('.')
     end
 

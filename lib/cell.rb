@@ -15,7 +15,11 @@ class Cell
   end
 
   def place_ship(new_ship)
-    @ship = new_ship
+    if empty?
+      @ship = new_ship
+    else
+      "This cell already contains a ship, please choose a new coordinate"
+    end
   end
 
   def fired_upon?
@@ -25,8 +29,8 @@ class Cell
   def fire_upon
     if @ship
       @ship.hit
+      @fired_upon = true
     end
-    @fired_upon = true
   end
 
   # def render
