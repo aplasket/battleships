@@ -32,7 +32,6 @@ RSpec.describe Ship do
       @cruiser.hit
       expect(@cruiser.sunk?).to be(false)
       @cruiser.hit
-      require 'pry'; binding.pry
       expect(@cruiser.sunk?).to be(false)
       @cruiser.hit
       expect(@cruiser.sunk?).to be(true)
