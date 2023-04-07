@@ -37,8 +37,21 @@ RSpec.describe Cell do
   describe '#place ship' do
     it 'can add a ship to a cell' do
       @cell.place_ship(@cruiser)
+
       expect(@cell.ship).to eq(@cruiser)
       expect(@cell.ship).to be_a(Ship)
+    end
+  end
+
+  describe '#damaged' do
+    it 'ship will be damaged when fired upon' do
+      @cell.place_ship(@cruiser)
+
+      expect(@cell.fired_upon?).to be(false)
+
+      @cell.fire_upon
+
+      expect(@cell.ship.health).to eq(2)
     end
   end
 end

@@ -5,6 +5,7 @@ class Cell
   def initialize(coordinate)
     @coordinate = coordinate
     @ship = nil
+    @fired_upon = false
   end
 
   def empty?
@@ -13,5 +14,16 @@ class Cell
 
   def place_ship(new_ship)
     @ship = new_ship
+  end
+
+  def fired_upon?
+    @fired_upon
+  end
+
+  def fire_upon
+    if @ship
+      @ship.hit
+    end
+    @fired_upon = true
   end
 end
