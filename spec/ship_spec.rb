@@ -16,4 +16,10 @@ RSpec.describe Ship do
       expect(@cruiser.length).to eq(3)
     end
   end
+
+  describe '#health' do
+    it 'starts with full health equal to ship.length' do
+      expect(@cruiser.health).to eq(3)
+    end
+  end
 end
