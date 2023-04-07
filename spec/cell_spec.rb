@@ -69,11 +69,29 @@ RSpec.describe Cell do
       expect(@cell_1.render).to eq("M")
     end
 
-    it 'return S when passing in true boolean' do
+    it 'return "S" when passing in true boolean' do
       @cell_2.place_ship(@cruiser)
-      require 'pry'; binding.pry
+
       expect(@cell_2.render).to eq(".")
       expect(@cell_2.render(true)).to eq("S")
+    end
+
+    it 'returns "H" when the ship in the cell has been hit' do
+        @cell_2.place_ship(@cruiser)
+        @cell_2.fire_upon
+
+        expect(@cell_2.render).to eq("H")
+        expect(@cruiser.sunk?).to be(false)
+    end
+
+    it 'returns "X" when the ship in the cell has been sunk' do
+      @cell_2.place_ship(@cruiser)
+      @cell_2.fire_upon
+      @cruiser.hit
+      @cruiser.hit
+
+      expect(@cruiser.sunk?).to be(true)
+      expect(@cell_2.render).to eq("X")
     end
   end
 end
