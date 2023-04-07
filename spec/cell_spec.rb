@@ -3,6 +3,7 @@ require 'spec_helper'
 RSpec.describe Cell do
   before(:each) do
     @cell = Cell.new("B4")
+    @cruiser = Ship.new("Cruiser", 3)
   end
 
   describe '#initialize' do
@@ -24,6 +25,20 @@ RSpec.describe Cell do
   describe '#empty' do
     it 'has a default of empty' do
       expect(@cell.empty?).to be(true)
+    end
+
+    it 'returns true if a ship is placed' do
+      @cell.place_ship(@cruiser)
+
+      expect(@cell.empty?).to be(false)
+    end
+  end
+
+  describe '#place ship' do
+    it 'can add a ship to a cell' do
+      @cell.place_ship(@cruiser)
+      expect(@cell.ship).to eq(@cruiser)
+      expect(@cell.ship).to be_a(Ship)
     end
   end
 end
