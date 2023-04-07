@@ -12,10 +12,10 @@ class Ship
   end
 
   def sunk?
-    @sunk
+    @health == 0
   end
 
   def hit
-   @health -= 1
+    @health -= 1
   end
 end

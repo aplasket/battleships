@@ -27,6 +27,16 @@ RSpec.describe Ship do
     it 'starts with a default status of false' do
       expect(@cruiser.sunk?).to be(false)
     end
+
+    it 'ship is sunk after being hit eq to ship.length' do
+      @cruiser.hit
+      expect(@cruiser.sunk?).to be(false)
+      @cruiser.hit
+      require 'pry'; binding.pry
+      expect(@cruiser.sunk?).to be(false)
+      @cruiser.hit
+      expect(@cruiser.sunk?).to be(true)
+    end
   end
 
   describe '#hit' do
