@@ -15,6 +15,8 @@ class Cell
   def place_ship(new_ship)
     if empty?
       @ship = new_ship
+    else
+      "This cell already contains a ship, please choose a new coordinate"
     end
   end
 
