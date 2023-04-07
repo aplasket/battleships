@@ -3,6 +3,8 @@ require 'spec_helper'
 RSpec.describe do
   before(:each) do
     @board = Board.new
+    @cruiser = Ship.new("Cruiser", 3)
+    @submarine = Ship.new("Submarine", 2)
   end
 
   describe '#initialize' do
@@ -28,5 +30,10 @@ RSpec.describe do
     end
   end
 
-  describe '#validating placement'
+  describe '#validating placement' do
+    it 'will check that coordinates match length of ship' do
+      expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to be(false)
+      expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to be(false)
+    end
+  end
 end
