@@ -45,7 +45,7 @@ RSpec.describe Cell do
     end
   end
 
-  describe '#damaged' do
+  describe '#fire upon' do
     it 'ship will be damaged when fired upon' do
       @cell.place_ship(@cruiser)
 
