@@ -4,6 +4,7 @@ RSpec.describe Cell do
   before(:each) do
     @cell = Cell.new("B4")
     @cruiser = Ship.new("Cruiser", 3)
+    @cell_1 = Cell.new("B4")
   end
 
   describe '#initialize' do
@@ -53,6 +54,18 @@ RSpec.describe Cell do
 
       expect(@cell.ship.health).to eq(2)
       expect(@cell.fired_upon?).to be(true)
+    end
+  end
+
+  describe '#render' do
+    it 'will return "." if the cell has not been fired upon' do
+      expect(@cell_1.render).to eq('.')
+    end
+
+    xit 'will return "M" if fired upon' do
+      @cell_1.fire_upon
+
+      expect(@cell_1.render).to eq("M")
     end
   end
 end
