@@ -5,6 +5,7 @@ RSpec.describe Cell do
     @cell = Cell.new("B4")
     @cruiser = Ship.new("Cruiser", 3)
     @cell_1 = Cell.new("B4")
+    @cell_2 = Cell.new("C3")
   end
 
   describe '#initialize' do
@@ -44,7 +45,7 @@ RSpec.describe Cell do
     end
   end
 
-  describe '#fired upon' do
+  describe '#fire upon' do
     it 'ship will be damaged when fired upon' do
       @cell.place_ship(@cruiser)
 
@@ -58,14 +59,39 @@ RSpec.describe Cell do
   end
 
   describe '#render' do
-    xit 'will return "." if the cell has not been fired upon' do
+    it 'will return "." if the cell has not been fired upon' do
       expect(@cell_1.render).to eq('.')
     end
 
-    xit 'will return "M" if fired upon' do
+    it 'will return "M" if fired upon' do
       @cell_1.fire_upon
 
       expect(@cell_1.render).to eq("M")
+    end
+
+    it 'return "S" when passing in true boolean' do
+      @cell_2.place_ship(@cruiser)
+
+      expect(@cell_2.render).to eq(".")
+      expect(@cell_2.render(true)).to eq("S")
+    end
+
+    it 'returns "H" when the ship in the cell has been hit' do
+        @cell_2.place_ship(@cruiser)
+        @cell_2.fire_upon
+
+        expect(@cell_2.render).to eq("H")
+        expect(@cruiser.sunk?).to be(false)
+    end
+
+    it 'returns "X" when the ship in the cell has been sunk' do
+      @cell_2.place_ship(@cruiser)
+      @cell_2.fire_upon
+      @cruiser.hit
+      @cruiser.hit
+
+      expect(@cruiser.sunk?).to be(true)
+      expect(@cell_2.render).to eq("X")
     end
   end
 end
