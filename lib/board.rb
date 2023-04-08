@@ -36,19 +36,28 @@ class Board
     coordinates.each {|coordinate| letters << coordinate.split("").first.ord}
     coordinates.each {|coordinate| numbers << coordinate.split("").last.to_i}
     if ship.length == 3
+      # require 'pry'; binding.pry
       return false unless letters.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || letters.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
       return false unless numbers.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || numbers.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
       return false unless same_coordinates_check(coordinates)
+      return true unless numbers.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1} && letters.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
     elsif ship.length == 2
       return false unless letters.each_cons(2).any? {|a,b| a - b == 0} || letters.each_cons(2).any? {|a,b| b == a + 1}
       return false unless numbers.each_cons(2).any? {|a,b| a - b == 0} || numbers.each_cons(2).any? {|a,b| b == a + 1}
       return false unless same_coordinates_check(coordinates)
+      return true unless numbers.each_cons(2).any? {|a,b| b == a + 1} && letters.each_cons(2).any? {|a,b| b == a + 1}
+    else
+      false
     end
   end
     
   def same_coordinates_check(coordinates)
     coordinates.uniq.length == coordinates.length
   end
+
+  # def diagonal_check(coordinates)
+  #   numbers.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1} && letters.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
+  # end
 end
 
 #edge case - can't add/place a ship that is > 3
