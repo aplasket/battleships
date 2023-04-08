@@ -28,6 +28,7 @@ class Board
   def valid_placement?(ship, coordinates)
     return false unless ship.length == coordinates.count
     return false unless consecutive_check(ship, coordinates)
+    true
   end
   
   def consecutive_check(ship, coordinates)
@@ -36,7 +37,6 @@ class Board
     coordinates.each {|coordinate| letters << coordinate.split("").first.ord}
     coordinates.each {|coordinate| numbers << coordinate.split("").last.to_i}
     if ship.length == 3
-      # require 'pry'; binding.pry
       return false unless letters.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || letters.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
       return false unless numbers.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || numbers.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
       return false unless same_coordinates_check(coordinates)
@@ -54,10 +54,6 @@ class Board
   def same_coordinates_check(coordinates)
     coordinates.uniq.length == coordinates.length
   end
-
-  # def diagonal_check(coordinates)
-  #   numbers.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1} && letters.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
-  # end
 end
 
 #edge case - can't add/place a ship that is > 3
