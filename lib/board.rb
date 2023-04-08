@@ -26,8 +26,8 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
-    ship.length == coordinates.count
-    consecutive_check(ship, coordinates)
+    return false unless ship.length == coordinates.count
+    return false unless consecutive_check(ship, coordinates)
   end
   
   def consecutive_check(ship, coordinates)
@@ -36,15 +36,13 @@ class Board
     coordinates.each {|coordinate| letters << coordinate.split("").first.ord}
     coordinates.each {|coordinate| numbers << coordinate.split("").last.to_i}
     if ship.length == 3
-      if letters.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || letters.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
-        if numbers.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || numbers.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
-          if same_coordinates_check(coordinates)
-            true
-          else
-            false
-          end
-        end
-      end
+      return false unless letters.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || letters.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
+      return false unless numbers.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || numbers.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
+      return false unless same_coordinates_check(coordinates)
+    elsif ship.length == 2
+      return false unless letters.each_cons(2).any? {|a,b| a - b == 0} || letters.each_cons(2).any? {|a,b| b == a + 1}
+      return false unless numbers.each_cons(2).any? {|a,b| a - b == 0} || numbers.each_cons(2).any? {|a,b| b == a + 1}
+      return false unless same_coordinates_check(coordinates)
     end
   end
     
@@ -53,15 +51,4 @@ class Board
   end
 end
 
-#edge case - can't put the same coordinates in [A1, A1]
-# elsif ship.length == 2
-#   if letters.each_cons(2).any? {|a,b| a - b == 0} || letters.each_cons(2).any? {|a,b| b == a + 1}
-#     if numbers.each_cons(2).any? {|a,b| a - b == 0} || numbers.each_cons(2).any? {|a,b| b == a + 1}
-#       if same_coordinates_check(coordinates)
-#         true
-#       else
-#         false
-#       end
-#     end
-#   end
-# end
+#edge case - can't add/place a ship that is > 3

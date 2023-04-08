@@ -31,7 +31,7 @@ RSpec.describe do
   end
 
   describe '#validating placement' do
-    xit 'will check that coordinates match length of ship' do
+    it 'will check that coordinates match length of ship' do
       expect(@board.valid_placement?(@cruiser, ["A1", "A2"])).to be(false)
       expect(@board.valid_placement?(@submarine, ["A2", "A3", "A4"])).to be(false)
     end
@@ -43,7 +43,7 @@ RSpec.describe do
       expect(@board.valid_placement?(@submarine, ["C1", "B1"])).to be(false)
     end
 
-    xit 'checks that same coordinates cannot be used' do
+    it 'checks that same coordinates cannot be used' do
       expect(@board.valid_placement?(@submarine, ["A1", "A1"])).to be(false)
       expect(@board.valid_placement?(@cruiser, ["A1", "B1", "A1"])).to be(false)
     end
