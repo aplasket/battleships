@@ -35,12 +35,11 @@ class Board
     numbers = []
     coordinates.each {|coordinate| letters << coordinate.split("").first.ord}
     coordinates.each {|coordinate| numbers << coordinate.split("").last.to_i}
-    if ship.length == 2
-      # require 'pry'; binding.pry
-      if letters.each_cons(2).any? {|a,b| a - b == 0} || letters.each_cons(2).any? {|a,b| b == a + 1}
-        if numbers.each_cons(2).any? {|a,b| a - b == 0} || numbers.each_cons(2).any? {|a,b| b == a + 1}
+    if ship.length == 3
+      if letters.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || letters.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
+        if numbers.each_cons(3).any? {|a,b,c| a - b == 0 && b - c == 0} || numbers.each_cons(3).any? {|a,b,c| b == a + 1 && c == b + 1}
           if same_coordinates_check(coordinates)
-           true
+            true
           else
             false
           end
@@ -48,10 +47,21 @@ class Board
       end
     end
   end
-  
+    
   def same_coordinates_check(coordinates)
     coordinates.uniq.length == coordinates.length
   end
 end
 
 #edge case - can't put the same coordinates in [A1, A1]
+# elsif ship.length == 2
+#   if letters.each_cons(2).any? {|a,b| a - b == 0} || letters.each_cons(2).any? {|a,b| b == a + 1}
+#     if numbers.each_cons(2).any? {|a,b| a - b == 0} || numbers.each_cons(2).any? {|a,b| b == a + 1}
+#       if same_coordinates_check(coordinates)
+#         true
+#       else
+#         false
+#       end
+#     end
+#   end
+# end
