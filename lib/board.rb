@@ -54,6 +54,14 @@ class Board
   def same_coordinates_check(coordinates)
     coordinates.uniq.length == coordinates.length
   end
+
+  def place(ship, coordinates)
+    coordinates.each do |coordinate|
+      if @cells[coordinate].empty?
+        @cells[coordinate].place_ship(ship)
+      end
+    end
+  end
 end
 
 #edge case - can't add/place a ship that is > 3

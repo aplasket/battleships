@@ -52,7 +52,6 @@ RSpec.describe do
     end
 
     it 'checks that coordinates are not diagonal' do
-      # require 'pry'; binding.pry
       expect(@board.valid_placement?(@cruiser, ["A1", "B2", "C3"])).to be(false)
       expect(@board.valid_placement?(@submarine, ["C2", "D3"])).to be(false)
     end
@@ -60,6 +59,20 @@ RSpec.describe do
     it 'checks that the ship placement is valid' do
       expect(@board.valid_placement?(@submarine, ["A1", "A2"])).to be(true)
       expect(@board.valid_placement?(@cruiser, ["B1", "C1", "D1"])).to be(true)
+    end
+  end
+
+  describe '#place' do
+    it 'can place a ship on the board with valid coordinates' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+      cell_1 = @board.cells["A1"]
+      cell_2 = @board.cells["A2"]
+      cell_3 = @board.cells["A3"]  
+
+      expect(cell_1.ship).to eq(@cruiser)
+      expect(cell_2.ship).to eq(@cruiser)
+      expect(cell_3.ship).to eq(@cruiser)
+      expect(cell_3.ship == cell_2.ship).to be(true)
     end
   end
 end
