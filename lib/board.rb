@@ -27,6 +27,31 @@ class Board
 
   def valid_placement?(ship, coordinates)
     ship.length == coordinates.count
-    
+    consecutive_check(ship, coordinates)
+  end
+  
+  def consecutive_check(ship, coordinates)
+    letters = []
+    numbers = []
+    coordinates.each {|coordinate| letters << coordinate.split("").first.ord}
+    coordinates.each {|coordinate| numbers << coordinate.split("").last.to_i}
+    if ship.length == 2
+      # require 'pry'; binding.pry
+      if letters.each_cons(2).any? {|a,b| a - b == 0} || letters.each_cons(2).any? {|a,b| b == a + 1}
+        if numbers.each_cons(2).any? {|a,b| a - b == 0} || numbers.each_cons(2).any? {|a,b| b == a + 1}
+          if same_coordinates_check(coordinates)
+           true
+          else
+            false
+          end
+        end
+      end
+    end
+  end
+  
+  def same_coordinates_check(coordinates)
+    coordinates.uniq.length == coordinates.length
   end
 end
+
+#edge case - can't put the same coordinates in [A1, A1]
