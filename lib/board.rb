@@ -28,6 +28,7 @@ class Board
   def valid_placement?(ship, coordinates)
     return false unless ship.length == coordinates.count
     return false unless consecutive_check(ship, coordinates)
+    return false unless not_overlapping(coordinates)
     true
   end
   
@@ -54,6 +55,22 @@ class Board
   def same_coordinates_check(coordinates)
     coordinates.uniq.length == coordinates.length
   end
+
+  def not_overlapping(coordinates)
+    coordinates.all? {|coordinate| @cells[coordinate].empty?}
+  end
+
+  def place(ship, coordinates)
+    coordinates.each do |coordinate|
+      if @cells[coordinate].empty?
+        @cells[coordinate].place_ship(ship)
+      end
+    end
+  end
 end
 
 #edge case - can't add/place a ship that is > 3
+#possible edge case - do we need to make the place method be as such that 
+##   it can't even place a ship if it's overlapping?
+## right now it's only returning false when we call @board.valid_valid_placement?(@submarine, ["A1", "B1"])
+## but when we call @board.place(@submarine, ["A1", "B1"]) for spec tst rb:78 it returns an array of coordinates
