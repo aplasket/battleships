@@ -80,4 +80,18 @@ RSpec.describe do
       expect(@board.valid_placement?(@submarine, ["A1", "B1"])).to be(false)
     end
   end
+
+  describe '#render board' do
+    it 'returns a string representation of the board with hidden ships' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+
+      expect(@board.render).to eq("  1 2 3 4 \nA . . . . \nB . . . . \nC . . . . \nD . . . . \n")
+    end
+    
+    it 'returns a string representation of the board with visible ships' do
+      @board.place(@cruiser, ["A1", "A2", "A3"])
+      @board.place(@submarine, ["D3", "D4"])
+      expect(@board.render(true)).to eq("  1 2 3 4 \nA S S S . \nB . . . . \nC . . . . \nD . . S S \n")
+    end
+  end
 end
