@@ -90,6 +90,6 @@ end
 #edge case - can't add/place a ship that is > 3
 #possible edge case - do we need to make the place method be as such that 
 ##   it can't even place a ship if it's overlapping?
-## right now it's only returning false when we call @board.valid_valid_placement?(@submarine, ["A1", "B1"])
+## right now it's only returning false when we call @board.valid_placement?(@submarine, ["A1", "B1"])
 ## but when we call @board.place(@submarine, ["A1", "B1"]) for spec tst rb:78 it returns an array of coordinates
 # do we want to consider changing to all double quotes or single quotes? We seem to be going back and forth (probably because we are copying from the Iteration)
