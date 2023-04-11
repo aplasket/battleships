@@ -93,3 +93,5 @@ end
 ## but when we call @board.place(@submarine, ["A1", "B1"]) for spec tst rb:78 it returns an array of coordinates
 # do we want to consider changing to all double quotes or single quotes? We seem to be going back and forth (probably because we are copying from the Iteration)
 ## edge case for game - writing statements for why coordinates are not valid (e.g. not enough coordinates)
+# Ask Dani about game_spec, what else needs to be added?
+# Ask Dani about The turn in Iteration 3, can we have it where player fires and then knows the result before computer fires?
