@@ -81,7 +81,6 @@ class Board
       "B #{@cells["B1"].render} #{@cells["B2"].render} #{@cells["B3"].render} #{@cells["B4"].render} \n" +
       "C #{@cells["C1"].render} #{@cells["C2"].render} #{@cells["C3"].render} #{@cells["C4"].render} \n" +
       "D #{@cells["D1"].render} #{@cells["D2"].render} #{@cells["D3"].render} #{@cells["D4"].render} \n"
-      
     end
   end       
 
@@ -90,6 +89,6 @@ end
 #edge case - can't add/place a ship that is > 3
 #possible edge case - do we need to make the place method be as such that 
 ##   it can't even place a ship if it's overlapping?
-## right now it's only returning false when we call @board.valid_placement?(@submarine, ["A1", "B1"])
+## right now it's only returning false when we call @board.valid_valid_placement?(@submarine, ["A1", "B1"])
 ## but when we call @board.place(@submarine, ["A1", "B1"]) for spec tst rb:78 it returns an array of coordinates
 # do we want to consider changing to all double quotes or single quotes? We seem to be going back and forth (probably because we are copying from the Iteration)
