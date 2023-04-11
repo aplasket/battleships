@@ -33,7 +33,17 @@ class Game
     comp_submarine = Ship.new("Submarine", 2)
     computer_placement(comp_cruiser)
     computer_placement(comp_submarine)
-    p @computer.board.render(true)
+    # @computer.board.render
+
+    player_cruiser = Ship.new("Cruiser", 3)
+    player_submarine = Ship.new("Submarine", 2)
+    p "I have laid out my ships on the grid."
+    p "You now need to lay out your two ships."
+    p "The Cruiser is three units long and the Submarine is two units long."
+    p @player.board.render(true)
+    p "Enter the squares for the Cruiser (3 spaces):"
+    player_placement(player_cruiser)
+    player_placement(player_submarine)
   end
   
   def valid_coordinates(ship)
@@ -48,6 +58,10 @@ class Game
     @computer.board.place(ship, valid_coordinates(ship))
   end
   
+  def player_placement(player_cruiser)
+    
+  end
+
 end
 
 # turns
