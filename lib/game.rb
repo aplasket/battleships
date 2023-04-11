@@ -1,12 +1,10 @@
-require './spec/spec_helper'
-
 class Game
   attr_reader :computer,
               :player
 
-  def initialize(computer, player)
-    @computer = computer
-    @player = player
+  def initialize
+    @computer = Computer.new
+    @player = Player.new
 
   end
   def start
@@ -20,6 +18,7 @@ class Game
     if input == "p"
       puts " ----------------------"
       puts "Let's play!"
+      sleep(0.8)
       play_game
     elsif input == "q"
       puts "You are quitting!"
@@ -52,6 +51,7 @@ class Game
     puts "I have laid out my ships on the grid."
     puts "You now need to lay out your two ships."
     puts "The Cruiser is three units long and the Submarine is two units long."
+    sleep(0.8)
     puts 
     puts "Rules for Battleship placements:\n" + 
           " - The number of coordinates entered must equal the ship's unit length described above\n" +
