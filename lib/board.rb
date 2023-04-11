@@ -92,3 +92,4 @@ end
 ## right now it's only returning false when we call @board.valid_valid_placement?(@submarine, ["A1", "B1"])
 ## but when we call @board.place(@submarine, ["A1", "B1"]) for spec tst rb:78 it returns an array of coordinates
 # do we want to consider changing to all double quotes or single quotes? We seem to be going back and forth (probably because we are copying from the Iteration)
+## edge case for game - writing statements for why coordinates are not valid (e.g. not enough coordinates)
