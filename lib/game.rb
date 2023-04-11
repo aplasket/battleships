@@ -112,7 +112,7 @@ class Game
 
   def computer_fire_upon
     coordinate_array = []
-    until @player.board.valid_coordinate?(coordinate_array) do
+    until @player.board.valid_coordinate?(coordinate_array) && !@player.board.cells[coordinate_array].fired_upon? do
       coordinate_array = @computer.board.cells.keys.sample
     end
     @player.board.cells[coordinate_array].fire_upon
