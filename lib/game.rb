@@ -29,17 +29,26 @@ class Game
   end
 
   def play_game
-    # computer placement
-    # pick same number as length as ship
-    # until @computer.board.valid_placement?(ship, coordinates) do
-      arr = @computer.board.cells.to_a.flatten #needs to match length of ship
-      p arr.sample
-      # board.place_ship(ship, coordinates)
-    # end
-    # player placement
-
-    # turns
-    # end game
+    comp_cruiser = Ship.new("Cruiser", 3)
+    comp_submarine = Ship.new("Submarine", 2)
+    computer_placement(comp_cruiser)
+    computer_placement(comp_submarine)
+    p @computer.board.render(true)
   end
-
+  
+  def valid_coordinates(ship)
+    coordinate_array = []
+    until @computer.board.valid_placement?(ship, coordinate_array) do
+      coordinate_array = @computer.board.cells.keys.sample(ship.length)
+    end
+    coordinate_array
+  end
+  
+  def computer_placement(ship)
+    @computer.board.place(ship, valid_coordinates(ship))
+  end
+  
 end
+
+# turns
+# end game
