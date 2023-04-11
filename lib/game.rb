@@ -45,6 +45,7 @@ class Game
     player_placement(player_submarine)
     puts 
     puts "Time to start the battle!"
+    play_turn
   end
   
   def lists_rules
@@ -90,6 +91,32 @@ class Game
     puts @player.board.render(true)
   end
 
+  def play_turn
+    puts '=============COMPUTER BOARD============='
+    puts @computer.board.render
+    puts '==============PLAYER BOARD=============='
+    puts @player.board.render(true)
+    puts 'It is your turn to pick one coordinate to fire upon:'
+    player_fire_upon
+    computer_fire_upon
+  end
+  
+  def player_fire_upon
+    input = gets.chomp.upcase
+    until @computer.board.valid_coordinate?(input) do
+      puts "That is an invalid coordinate. Please try again:"
+      input = gets.chomp.upcase
+    end
+    @computer.board.cells[input].fire_upon
+  end
+
+  def computer_fire_upon
+    coordinate_array = []
+    until @player.board.valid_coordinate?(coordinate_array) do
+      coordinate_array = @computer.board.cells.keys.sample
+    end
+    @player.board.cells[coordinate_array].fire_upon
+  end
 end
 
 # turns
