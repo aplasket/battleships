@@ -1,12 +1,10 @@
-require './spec/spec_helper'
-
 class Game
   attr_reader :computer,
               :player
 
-  def initialize(computer, player)
-    @computer = computer
-    @player = player
+  def initialize
+    @computer = Computer.new
+    @player = Player.new
 
   end
   def start
@@ -20,6 +18,7 @@ class Game
     if input == "p"
       puts " ----------------------"
       puts "Let's play!"
+      sleep(0.8)
       play_game
     elsif input == "q"
       puts "You are quitting!"
@@ -45,12 +44,14 @@ class Game
     player_placement(player_submarine)
     puts 
     puts "Time to start the battle!"
+    play_turn
   end
   
   def lists_rules
     puts "I have laid out my ships on the grid."
     puts "You now need to lay out your two ships."
     puts "The Cruiser is three units long and the Submarine is two units long."
+    sleep(0.8)
     puts 
     puts "Rules for Battleship placements:\n" + 
           " - The number of coordinates entered must equal the ship's unit length described above\n" +
@@ -87,9 +88,62 @@ class Game
     puts
     puts "Huzzah! You've placed your #{ship.name}!"
     @player.board.place(ship, coordinate_array)
-    puts @player.board.render(true)
+    # puts @player.board.render(true)
   end
 
+  def play_turn
+    puts '=============COMPUTER BOARD============='
+    puts @computer.board.render
+    puts '==============PLAYER BOARD=============='
+    puts @player.board.render(true)
+    puts 'It is your turn to pick one coordinate to fire upon:'
+    player_fire_upon
+    computer_fire_upon
+    # puts "TEST"
+    # puts @computer.board.render(true)
+    # puts @player.board.render(true)
+  end
+  
+  def player_fire_upon
+    input = gets.chomp.upcase
+    until @computer.board.valid_coordinate?(input) do
+      puts "That is an invalid coordinate. Please try again:"
+      input = gets.chomp.upcase
+    end
+    @computer.board.cells[input].fire_upon
+    player_shot(input)
+  end
+
+  def player_shot(input)
+    if @computer.board.cells[input].render == "M"
+      puts "Your shot on #{input} was a miss"
+    elsif  @computer.board.cells[input].render == "H"
+      puts "Your shot on #{input} hit a ship"
+    elsif @computer.board.cells[input].render == "X"
+      puts "Your shot on #{input} sunk a ship!"
+    end
+  end
+
+  def computer_fire_upon
+    puts "Now the computer will choose a coordinate to fire upon!"
+    coordinate_array = []
+    until @player.board.valid_coordinate?(coordinate_array) && !@player.board.cells[coordinate_array].fired_upon? do
+      coordinate_array = @computer.board.cells.keys.sample
+    end
+    @player.board.cells[coordinate_array].fire_upon
+    puts "Computer fires upon #{coordinate_array}!"
+    computer_shot(coordinate_array)
+  end
+
+  def computer_shot(coordinate_array)
+    if @player.board.cells[coordinate_array].render == "M"
+      puts "The computer's shot on #{coordinate_array} was a miss!"
+    elsif  @player.board.cells[coordinate_array].render == "H"
+      puts "The computer's shot on #{coordinate_array} hit a ship1"
+    elsif @player.board.cells[coordinate_array].render == "X"
+      puts "The computer's shot on #{coordinate_array} sunk a ship!"
+    end
+  end
 end
 
 # turns
