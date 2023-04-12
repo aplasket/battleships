@@ -3,8 +3,6 @@ require 'spec_helper'
 RSpec.describe Computer do
   before(:each) do
     @computer = Computer.new
-    @cruiser = Ship.new("Cruiser", 3)
-    @submarine = Ship.new("Submarine", 2)
   end
 
   describe '#initialize' do
@@ -14,6 +12,8 @@ RSpec.describe Computer do
 
     it 'has attributes' do
       expect(@computer.board).to be_a(Board)
+      expect(@player.cruiser).to be_a(Ship)
+      expect(@player.submarine).to be_a(Ship)
     end
   end
 end

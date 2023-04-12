@@ -9,10 +9,6 @@ class Game
     @computer_sunken_ships = 0
   end
 
-  def start
-    main_menu
-  end
-
   def main_menu
     sleep(1)
     puts <<-'EOF'
@@ -77,9 +73,9 @@ class Game
     puts "...and probably lose"
     sleep(1)
     puts "OR"
-    sleep(2)
+    sleep(1)
     puts "Just press 'q' if you are scared" 
-    sleep(2)
+    sleep(1)
     puts "and want to quit..."
     input = gets.chomp.downcase
     if input == "p"
@@ -94,35 +90,33 @@ class Game
                                                                         
       ---------------------------------------------------------------------
       EOF
-      sleep(2)
+      sleep(1)
       puts
       puts
       play_game
     elsif input == "q"
-      puts "You are quitting!"
-      # quit game, clear the board
+      puts "Ah! I knew you were scared! Muhaha"
+      exit
     else
       puts "Please press 'p' or 'q' to continue"
     end
   end
 
   def play_game
-    comp_cruiser = Ship.new("Cruiser", 3)
-    comp_submarine = Ship.new("Submarine", 2)
-    computer_placement(comp_cruiser)
-    computer_placement(comp_submarine)
-
-    player_cruiser = Ship.new("Cruiser", 3)
-    player_submarine = Ship.new("Submarine", 2)
+    computer_placement(@computer.cruiser)
+    computer_placement(@computer.submarine)
     lists_rules
     puts "First, you must place your Cruiser on the board. " +
     "Type in 3 valid coordinates in either a horizontal or vertical row"
     puts "Example: A1 A2 A3"
-    player_placement(player_cruiser)
+    player_placement(@player.cruiser)
     puts
     puts "Let's place your Submarine! Type in 2 valid coordinates in a horizonal or vertical row."
     puts "Example: B1 B2:"
-    player_placement(player_submarine)
+    puts
+    puts @player.board.render(true)
+    2.times{puts}
+    player_placement(@player.submarine)
     puts 
     puts "        Time to start the battle!"
     puts
@@ -195,7 +189,6 @@ class Game
       player_fire_upon
       computer_fire_upon
     end
-    # run_winner_result
   end
   
   def player_fire_upon
