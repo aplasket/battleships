@@ -3,8 +3,6 @@ require 'spec_helper'
 RSpec.describe Player do
   before(:each) do
     @player = Player.new
-    # @cruiser = Ship.new("Cruiser", 3)
-    # @submarine = Ship.new("Submarine", 2)
   end
 
   describe '#initialize' do
