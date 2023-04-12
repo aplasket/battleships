@@ -15,58 +15,58 @@ class Game
 
   def main_menu
     sleep(1)
-    # puts <<-'EOF'
-    #                          __      __       .__                               
-    #                         /  \    /  \ ____ |  |   ____  ____   _____   ____  
-    #                         \   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \ 
-    #                          \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/ 
-    #                           \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >
-    #                                \/       \/          \/            \/     \/ 
+    puts <<-'EOF'
+                             __      __       .__                               
+                            /  \    /  \ ____ |  |   ____  ____   _____   ____  
+                            \   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \ 
+                             \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/ 
+                              \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >
+                                   \/       \/          \/            \/     \/ 
 
-    # EOF
-    # sleep(1)
-    # puts <<-'EOF'
-    #                                            __          
-    #                                          _/  |_  ____  
-    #                                          \   __\/  _ \ 
-    #                                           |  | (  <_> )
-    #                                           |__|  \____/ 
+    EOF
+    sleep(1)
+    puts <<-'EOF'
+                                               __          
+                                             _/  |_  ____  
+                                             \   __\/  _ \ 
+                                              |  | (  <_> )
+                                              |__|  \____/ 
                  
-    # EOF
-    # sleep(1)
-    # puts <<-'EOF'
-    # __________    ___________________________.____     ___________ _________ ___ ___ ._____________ 
-    # \______   \  /  _  \__    ___/\__    ___/|    |    \_   _____//   _____//   |   \|   \______   \
-    #  |    |  _/ /  /_\  \|    |     |    |   |    |     |    __)_ \_____  \/    ~    \   ||     ___/
-    #  |    |   \/    |    \    |     |    |   |    |___  |        \/        \    Y    /   ||    |    
-    #  |______  /\____|__  /____|     |____|   |_______ \/_______  /_______  /\___|_  /|___||____|    
-    #         \/         \/                            \/        \/        \/       \/               
+    EOF
+    sleep(1)
+    puts <<-'EOF'
+    __________    ___________________________.____     ___________ _________ ___ ___ ._____________ 
+    \______   \  /  _  \__    ___/\__    ___/|    |    \_   _____//   _____//   |   \|   \______   \
+     |    |  _/ /  /_\  \|    |     |    |   |    |     |    __)_ \_____  \/    ~    \   ||     ___/
+     |    |   \/    |    \    |     |    |   |    |___  |        \/        \    Y    /   ||    |    
+     |______  /\____|__  /____|     |____|   |_______ \/_______  /_______  /\___|_  /|___||____|    
+            \/         \/                            \/        \/        \/       \/               
 
-    # EOF
-    # sleep(2)
-    # puts <<-'EOF'
-    #                                               __/___            
-    #                                         _____/______|           
-    #                                 _______/_____\_______\_____     
-    #                                 \              < < <       |    
-    #                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    EOF
+    sleep(2)
+    puts <<-'EOF'
+                                                  __/___            
+                                            _____/______|           
+                                    _______/_____\_______\_____     
+                                    \              < < <       |    
+                                    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-    # EOF
-    # sleep(2)
-    # puts <<-'EOF'
-    #                                             |    |    |                 
-    #                                             )_)  )_)  )_)              
-    #                                           )___))___))___)\            
-    #                                           )____)____)_____)\\
-    #                                         _____|____|____|____\\\__
-    #                               ---------\                   /---------
-    #                                   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^
-    #                                     ^^^^      ^^^^     ^^^    ^^
-    #                                           ^^^^      ^^^
+    EOF
+    sleep(2)
+    puts <<-'EOF'
+                                                |    |    |                 
+                                               )_)  )_)  )_)              
+                                              )___))___))___)\            
+                                             )____)____)_____)\\
+                                           _____|____|____|____\\\__
+                                  ---------\                   /---------
+                                      ^^^^^ ^^^^^^^^^^^^^^^^^^^^^
+                                        ^^^^      ^^^^     ^^^    ^^
+                                              ^^^^      ^^^
 
-    # EOF
-    # sleep(2)
-    # puts "
+    EOF
+    sleep(2)
+    puts "
     
     
     
@@ -85,18 +85,6 @@ class Game
     
     
     
-    
-
-
-
-
-
-
-
-
-
-
-
     
 
 
@@ -109,6 +97,18 @@ class Game
 
 
 
+    
+
+
+
+
+
+
+
+
+
+
+
 
     
     
@@ -121,21 +121,21 @@ class Game
     
     
     
-    # "
+    "
     
-    # sleep(3)
-    # puts "ARRRRR MATEY!" 
-    # sleep(2)
-    # puts "Are you ready to play?"
-    # sleep(2)
-    # puts "Enter 'p' to play..."
-    # sleep(1)
-    # puts "...and probably lose"
-    # sleep(1)
-    # puts "OR"
-    # sleep(2)
-    # puts "Just press 'q' if you are scared" 
-    # sleep(2)
+    sleep(3)
+    puts "ARRRRR MATEY!" 
+    sleep(2)
+    puts "Are you ready to play?"
+    sleep(2)
+    puts "Enter 'p' to play..."
+    sleep(1)
+    puts "...and probably lose"
+    sleep(1)
+    puts "OR"
+    sleep(2)
+    puts "Just press 'q' if you are scared" 
+    sleep(2)
     puts "and want to quit..."
     input = gets.chomp.downcase
     if input == "p"
@@ -171,22 +171,23 @@ class Game
     player_cruiser = Ship.new("Cruiser", 3)
     player_submarine = Ship.new("Submarine", 2)
     lists_rules
-    puts "First, you must place your Cruiser on the board.\nType in 3 valid coordinates in either a horizontal or vertical row"
-    puts "(Coordinates must be in alphabetical and numerical order)"
+    puts "First, you must place your Cruiser on the board. " +
+    "Type in 3 valid coordinates in either a horizontal or vertical row"
     puts "Example: A1 A2 A3"
-    # puts "Let's place your Cruiser! Type in 3 valid coordinates in a horizonal or vertical row.\n Example: A1 A2 A3:"
     player_placement(player_cruiser)
     puts
-    puts "Let's place your Submarine! Type in 2 valid coordinates in a horizonal or vertical row.\n Example: B1 B2:"
+    puts "Let's place your Submarine! Type in 2 valid coordinates in a horizonal or vertical row."
+    puts "Example: B1 B2:"
     player_placement(player_submarine)
     puts 
-    puts "Time to start the battle!"
+    puts "        Time to start the battle!"
+    puts
     play_turn
   end
   
   def lists_rules
-    puts "I have laid out my two ships on the grid.\n" +
-    "You now need decide on where to put your two ships.\n" +
+    puts "I have laid out my two ships on my grid.\n" +
+    "You now need decide on where to put your two ships on your grid.\n" +
     "The Cruiser is three units long and the Submarine is two units long.\n"
     puts 
     puts
@@ -237,11 +238,16 @@ class Game
 
   def play_turn
     until there_is_a_winner do
-      puts '=============COMPUTER BOARD============='
+      puts '===============COMPUTER BOARD==============='
       puts @computer.board.render
-      puts '==============PLAYER BOARD=============='
+      puts
+      puts '=================YOUR BOARD================='
       puts @player.board.render(true)
-      puts 'It is your turn to pick one coordinate to fire upon:'
+      puts
+      sleep(1)
+      puts "(S = Ship, H = Hit, M = Miss, X = Sunk Ship)"
+      puts
+      puts 'It is your turn. Pick one coordinate on the computers board to fire upon:'
       player_fire_upon
       computer_fire_upon
     end
@@ -259,6 +265,10 @@ class Game
   end
 
   def player_shot(input)
+    puts "
+    
+    
+    "
     if @computer.board.cells[input].render == "M"
       puts "Your shot on #{input} was a miss!"
     elsif  @computer.board.cells[input].render == "H"
@@ -270,16 +280,19 @@ class Game
         end_game
       end
     end
+    puts
   end
 
   def computer_fire_upon
     puts "Now the computer will choose a coordinate to fire upon!"
+    puts
     coordinate_array = []
     until @player.board.valid_coordinate?(coordinate_array) && !@player.board.cells[coordinate_array].fired_upon? do
       coordinate_array = @computer.board.cells.keys.sample
     end
     @player.board.cells[coordinate_array].fire_upon
     puts "Computer fires upon #{coordinate_array}!"
+    puts
     computer_shot(coordinate_array)
   end
 
@@ -292,27 +305,55 @@ class Game
       puts "The computer's shot on #{coordinate_array} sunk a ship!"
       @player_sunken_ships += 1
       if there_is_a_winner == true
+        sleep(1)
         end_game
       end
     end
+   puts"
+
+
+
+   "
   end
 
   def there_is_a_winner
+    sleep(3)
     if @computer_sunken_ships == 2
-      puts "You have won the game!"
+      puts "             You have won the game!"
       end_game
     elsif @player_sunken_ships == 2
-      puts "You've lost!"
+      puts "             You've lost!"
       end_game
     else
       false
     end
+    puts
   end
 
   def end_game
-    sleep(0.8)
     puts
-    puts "This battle has ended!"
+    puts "             This battle has ended!"
+    sleep(2)
+    puts <<-'EOF'
+                       ______
+                    .-"      '-.
+                   /            \
+       _          |              |          _
+      ( \         |,  .-.  .-.  ,|         / )
+       > "=._     | )(__/  \__)( |     _.=" <
+      (_/"=._"=._ |/     /\     \| _.="_.="\_)
+             "=._ (_     ^^     _)"_.="
+                 "=\__|IIIIII|__/="
+                _.="| \IIIIII/ |"=._
+      _     _.="_.="\          /"=._"=._     _
+     ( \_.="_.="     `--------`     "=._"=._/ ))
+      > _.="                            "=._ <
+     (_/                                    \_)
+
+
+
+    EOF
+    sleep(3)
     main_menu
   end
 end
