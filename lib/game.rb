@@ -51,7 +51,7 @@ class Game
     puts "I have laid out my ships on the grid."
     puts "You now need to lay out your two ships."
     puts "The Cruiser is three units long and the Submarine is two units long."
-    sleep(0.8)
+    # sleep(0.8)
     puts 
     puts "Rules for Battleship placements:\n" + 
           " - The number of coordinates entered must equal the ship's unit length described above\n" +
