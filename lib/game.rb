@@ -18,7 +18,7 @@ class Game
     if input == "p"
       puts " ----------------------"
       puts "Let's play!"
-      sleep(0.8)
+      # sleep(0.8)
       play_game
     elsif input == "q"
       puts "You are quitting!"
@@ -51,7 +51,7 @@ class Game
     puts "I have laid out my ships on the grid."
     puts "You now need to lay out your two ships."
     puts "The Cruiser is three units long and the Submarine is two units long."
-    sleep(0.8)
+    # sleep(0.8)
     puts 
     puts "Rules for Battleship placements:\n" + 
           " - The number of coordinates entered must equal the ship's unit length described above\n" +
@@ -106,8 +106,8 @@ class Game
   
   def player_fire_upon
     input = gets.chomp.upcase
-    until @computer.board.valid_coordinate?(input) do
-      puts "That is an invalid coordinate. Please try again:"
+    until @computer.board.valid_coordinate?(input) && !@computer.board.cells[input].fired_upon? do
+      puts "You have either already chosen this coordinate or it is not a valid placement. Please try again:"
       input = gets.chomp.upcase
     end
     @computer.board.cells[input].fire_upon
