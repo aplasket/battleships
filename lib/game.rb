@@ -5,8 +5,10 @@ class Game
   def initialize
     @computer = Computer.new
     @player = Player.new
-
+    @player_sunken_ships = 0
+    @computer_sunken_ships = 0
   end
+
   def start
     main_menu
   end
@@ -92,16 +94,16 @@ class Game
   end
 
   def play_turn
-    puts '=============COMPUTER BOARD============='
-    puts @computer.board.render
-    puts '==============PLAYER BOARD=============='
-    puts @player.board.render(true)
-    puts 'It is your turn to pick one coordinate to fire upon:'
-    player_fire_upon
-    computer_fire_upon
-    # puts "TEST"
-    # puts @computer.board.render(true)
-    # puts @player.board.render(true)
+    until there_is_a_winner do
+      puts '=============COMPUTER BOARD============='
+      puts @computer.board.render
+      puts '==============PLAYER BOARD=============='
+      puts @player.board.render(true)
+      puts 'It is your turn to pick one coordinate to fire upon:'
+      player_fire_upon
+      computer_fire_upon
+    end
+    # run_winner_result
   end
   
   def player_fire_upon
@@ -116,11 +118,15 @@ class Game
 
   def player_shot(input)
     if @computer.board.cells[input].render == "M"
-      puts "Your shot on #{input} was a miss"
+      puts "Your shot on #{input} was a miss!"
     elsif  @computer.board.cells[input].render == "H"
-      puts "Your shot on #{input} hit a ship"
+      puts "Your shot on #{input} hit a ship!"
     elsif @computer.board.cells[input].render == "X"
       puts "Your shot on #{input} sunk a ship!"
+      @computer_sunken_ships += 1
+      if there_is_a_winner == true
+        end_game
+      end
     end
   end
 
@@ -139,10 +145,31 @@ class Game
     if @player.board.cells[coordinate_array].render == "M"
       puts "The computer's shot on #{coordinate_array} was a miss!"
     elsif  @player.board.cells[coordinate_array].render == "H"
-      puts "The computer's shot on #{coordinate_array} hit a ship1"
+      puts "The computer's shot on #{coordinate_array} hit a ship!"
     elsif @player.board.cells[coordinate_array].render == "X"
       puts "The computer's shot on #{coordinate_array} sunk a ship!"
+      @player_sunken_ships += 1
+      if there_is_a_winner == true
+        end_game
+      end
     end
+  end
+
+  def there_is_a_winner
+    if @computer_sunken_ships == 2
+      puts "You have won the game!"
+      end_game
+    elsif @player_sunken_ships == 2
+      puts "You've lost!"
+      end_game
+    else
+      false
+    end
+  end
+
+  def end_game
+    puts "This battle has ended!"
+    main_menu
   end
 end
 
