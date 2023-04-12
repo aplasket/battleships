@@ -12,8 +12,8 @@ RSpec.describe Computer do
 
     it 'has attributes' do
       expect(@computer.board).to be_a(Board)
-      expect(@player.cruiser).to be_a(Ship)
-      expect(@player.submarine).to be_a(Ship)
+      expect(@computer.cruiser).to be_a(Ship)
+      expect(@computer.submarine).to be_a(Ship)
     end
   end
 end
