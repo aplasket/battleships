@@ -89,7 +89,3 @@ class Board
   end       
 
 end
-
-
-
-# do we want to consider changing to all double quotes or single quotes? We seem to be going back and forth (probably because we are copying from the Iteration)
