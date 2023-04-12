@@ -16,7 +16,7 @@ class Cell
     if empty?
       @ship = new_ship
     else
-      "This cell already contains a ship, please choose a new coordinate"
+      'This cell already contains a ship, please choose a new coordinate'
     end
   end
 
@@ -33,17 +33,17 @@ class Cell
 
   def render (argument = false)
     if argument == true && !empty? && !fired_upon?
-      "S"
+      'S'
     elsif fired_upon? && empty?
-      "M"
+      'M'
     elsif fired_upon? && !empty?
       if !ship.sunk?
-        "H"
+        'H'
       else
-        "X"
+        'X'
       end
     else !fired_upon?
-      "."
+      '.'
     end
   end
 end
