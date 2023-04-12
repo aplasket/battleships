@@ -95,3 +95,4 @@ end
 ## edge case for game - writing statements for why coordinates are not valid (e.g. not enough coordinates)
 # Ask Dani about game_spec, what else needs to be added?
 # Ask Dani about The turn in Iteration 3, can we have it where player fires and then knows the result before computer fires?
+# Player can't choose same result
