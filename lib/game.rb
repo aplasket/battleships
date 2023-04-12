@@ -66,63 +66,7 @@ class Game
 
     EOF
     sleep(2)
-    puts "
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-
-
-
-
-
-
-
-
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    "
-    
+    50.times{puts}
     sleep(3)
     puts "ARRRRR MATEY!" 
     sleep(2)
@@ -198,11 +142,11 @@ class Game
           " - No gaps are allowed when picking coordinates\n" +
           " - Ship coordinates cannot overlap with each other\n" +
           " - Examples of invalid coordinates:\n" +
-                " - A2 B3 C4 (diagonal placement is not allowed)\n" +
-                " - A3 A2 A1 (must be in numerical order)\n" +
+                "   - A2 B3 C4 (diagonal placement is not allowed)\n" +
+                "   - A3 A2 A1 (must be in numerical order)\n" +
           " - Exampes of valid coordinates:\n" +
-                " - A4 B4 C5\n" +
-                " - D2 D3"
+                "   - A4 B4 C5\n" +
+                "   - D2 D3"
     puts
     puts
     puts "Here is how your board looks currently!"
@@ -265,10 +209,7 @@ class Game
   end
 
   def player_shot(input)
-    puts "
-    
-    
-    "
+    3.times{puts}
     if @computer.board.cells[input].render == "M"
       puts "Your shot on #{input} was a miss!"
     elsif  @computer.board.cells[input].render == "H"
@@ -309,20 +250,17 @@ class Game
         end_game
       end
     end
-   puts"
-
-
-
-   "
+    3.times{puts}
   end
 
   def there_is_a_winner
     sleep(3)
+    puts
     if @computer_sunken_ships == 2
-      puts "             You have won the game!"
+      puts "                   You have won the game!"
       end_game
     elsif @player_sunken_ships == 2
-      puts "             You've lost!"
+      puts "                     You've lost!"
       end_game
     else
       false
@@ -332,23 +270,23 @@ class Game
 
   def end_game
     puts
-    puts "             This battle has ended!"
+    puts "                   This battle has ended!"
     sleep(2)
     puts <<-'EOF'
-                       ______
-                    .-"      '-.
-                   /            \
-       _          |              |          _
-      ( \         |,  .-.  .-.  ,|         / )
-       > "=._     | )(__/  \__)( |     _.=" <
-      (_/"=._"=._ |/     /\     \| _.="_.="\_)
-             "=._ (_     ^^     _)"_.="
-                 "=\__|IIIIII|__/="
-                _.="| \IIIIII/ |"=._
-      _     _.="_.="\          /"=._"=._     _
-     ( \_.="_.="     `--------`     "=._"=._/ ))
-      > _.="                            "=._ <
-     (_/                                    \_)
+                                   ______
+                                .-"      '-.
+                               /            \
+                  _           |              |          _
+                  ( \         |,  .-.  .-.  ,|         / )
+                  > "=._     | )(__/  \__)( |     _.=" <
+                  (_/"=._"=._ |/     /\     \| _.="_.="\_)
+                        "=._ (_     ^^     _)"_.="
+                            "=\__|IIIIII|__/="
+                           _.="| \IIIIII/ |"=._
+                  _     _.="_.="\          /"=._"=._     _
+                ( \_.="_.="     `--------`     "=._"=._/ ))
+                  > _.="                            "=._ <
+                (_/                                    \_)
 
 
 
