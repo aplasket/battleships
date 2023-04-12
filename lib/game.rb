@@ -20,7 +20,7 @@ class Game
     if input == "p"
       puts " ----------------------"
       puts "Let's play!"
-      # sleep(0.8)
+      sleep(0.8)
       play_game
     elsif input == "q"
       puts "You are quitting!"
@@ -53,7 +53,7 @@ class Game
     puts "I have laid out my ships on the grid."
     puts "You now need to lay out your two ships."
     puts "The Cruiser is three units long and the Submarine is two units long."
-    # sleep(0.8)
+    sleep(0.8)
     puts 
     puts "Rules for Battleship placements:\n" + 
           " - The number of coordinates entered must equal the ship's unit length described above\n" +
@@ -90,7 +90,6 @@ class Game
     puts
     puts "Huzzah! You've placed your #{ship.name}!"
     @player.board.place(ship, coordinate_array)
-    # puts @player.board.render(true)
   end
 
   def play_turn
@@ -168,10 +167,9 @@ class Game
   end
 
   def end_game
+    sleep(0.8)
+    puts
     puts "This battle has ended!"
     main_menu
   end
 end
-
-# turns
-# end game
