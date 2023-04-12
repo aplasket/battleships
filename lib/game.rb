@@ -14,13 +14,145 @@ class Game
   end
 
   def main_menu
-    puts "Welcome to BATTLESHIP"
-    puts "Enter p to play. Enter q to quit."
+    sleep(1)
+    # puts <<-'EOF'
+    #                          __      __       .__                               
+    #                         /  \    /  \ ____ |  |   ____  ____   _____   ____  
+    #                         \   \/\/   // __ \|  | _/ ___\/  _ \ /     \_/ __ \ 
+    #                          \        /\  ___/|  |_\  \__(  <_> )  Y Y  \  ___/ 
+    #                           \__/\  /  \___  >____/\___  >____/|__|_|  /\___  >
+    #                                \/       \/          \/            \/     \/ 
+
+    # EOF
+    # sleep(1)
+    # puts <<-'EOF'
+    #                                            __          
+    #                                          _/  |_  ____  
+    #                                          \   __\/  _ \ 
+    #                                           |  | (  <_> )
+    #                                           |__|  \____/ 
+                 
+    # EOF
+    # sleep(1)
+    # puts <<-'EOF'
+    # __________    ___________________________.____     ___________ _________ ___ ___ ._____________ 
+    # \______   \  /  _  \__    ___/\__    ___/|    |    \_   _____//   _____//   |   \|   \______   \
+    #  |    |  _/ /  /_\  \|    |     |    |   |    |     |    __)_ \_____  \/    ~    \   ||     ___/
+    #  |    |   \/    |    \    |     |    |   |    |___  |        \/        \    Y    /   ||    |    
+    #  |______  /\____|__  /____|     |____|   |_______ \/_______  /_______  /\___|_  /|___||____|    
+    #         \/         \/                            \/        \/        \/       \/               
+
+    # EOF
+    # sleep(2)
+    # puts <<-'EOF'
+    #                                               __/___            
+    #                                         _____/______|           
+    #                                 _______/_____\_______\_____     
+    #                                 \              < < <       |    
+    #                                 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+    # EOF
+    # sleep(2)
+    # puts <<-'EOF'
+    #                                             |    |    |                 
+    #                                             )_)  )_)  )_)              
+    #                                           )___))___))___)\            
+    #                                           )____)____)_____)\\
+    #                                         _____|____|____|____\\\__
+    #                               ---------\                   /---------
+    #                                   ^^^^^ ^^^^^^^^^^^^^^^^^^^^^
+    #                                     ^^^^      ^^^^     ^^^    ^^
+    #                                           ^^^^      ^^^
+
+    # EOF
+    # sleep(2)
+    # puts "
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    # "
+    
+    # sleep(3)
+    # puts "ARRRRR MATEY!" 
+    # sleep(2)
+    # puts "Are you ready to play?"
+    # sleep(2)
+    # puts "Enter 'p' to play..."
+    # sleep(1)
+    # puts "...and probably lose"
+    # sleep(1)
+    # puts "OR"
+    # sleep(2)
+    # puts "Just press 'q' if you are scared" 
+    # sleep(2)
+    puts "and want to quit..."
     input = gets.chomp.downcase
     if input == "p"
-      puts " ----------------------"
-      puts "Let's play!"
-      sleep(0.8)
+      puts <<-'EOF'
+      ---------------------------------------------------------------------
+         _      ______ _______ _  _____   _____  _           __     ___ 
+        | |    |  ____|__   __( )/ ____| |  __ \| |        /\\ \   / / |
+        | |    | |__     | |  |/| (___   | |__) | |       /  \\ \_/ /| |
+        | |    |  __|    | |     \___ \  |  ___/| |      / /\ \\   / | |
+        | |____| |____   | |     ____) | | |    | |____ / ____ \| |  |_|
+        |______|______|  |_|    |_____/  |_|    |______/_/    \_\_|  (_)
+                                                                        
+      ---------------------------------------------------------------------
+      EOF
+      sleep(2)
+      puts
+      puts
       play_game
     elsif input == "q"
       puts "You are quitting!"
@@ -39,7 +171,10 @@ class Game
     player_cruiser = Ship.new("Cruiser", 3)
     player_submarine = Ship.new("Submarine", 2)
     lists_rules
-    puts "Let's place your Cruiser! Type in 3 valid coordinates in a horizonal or vertical row.\n Example: A1 A2 A3:"
+    puts "First, you must place your Cruiser on the board.\nType in 3 valid coordinates in either a horizontal or vertical row"
+    puts "(Coordinates must be in alphabetical and numerical order)"
+    puts "Example: A1 A2 A3"
+    # puts "Let's place your Cruiser! Type in 3 valid coordinates in a horizonal or vertical row.\n Example: A1 A2 A3:"
     player_placement(player_cruiser)
     puts
     puts "Let's place your Submarine! Type in 2 valid coordinates in a horizonal or vertical row.\n Example: B1 B2:"
@@ -50,20 +185,28 @@ class Game
   end
   
   def lists_rules
-    puts "I have laid out my ships on the grid."
-    puts "You now need to lay out your two ships."
-    puts "The Cruiser is three units long and the Submarine is two units long."
-    # sleep(0.8)
+    puts "I have laid out my two ships on the grid.\n" +
+    "You now need decide on where to put your two ships.\n" +
+    "The Cruiser is three units long and the Submarine is two units long.\n"
     puts 
+    puts
     puts "Rules for Battleship placements:\n" + 
-          " - The number of coordinates entered must equal the ship's unit length described above\n" +
-          " - All coordinates must be entered in consecutive and alphabetical order\n" +
-          " - An example of invalid coordinates: A2 B3 C4 (diagonal placement is not allowed)\n" +
-          " - Another example of invalid coordinates: A3 A2 A1\n" +
-          " - Additionally, the 2 ships coordinates cannot overlap"
+          " - The number of coordinates entered must equal each of the ship's unit length described above\n" +
+          " - All coordinates must be placed horizontally or vertically (no diagonals)\n" +
+          " - All coordinates must be entered in numerical and alphabetical order\n" +
+          " - No gaps are allowed when picking coordinates\n" +
+          " - Ship coordinates cannot overlap with each other\n" +
+          " - Examples of invalid coordinates:\n" +
+                " - A2 B3 C4 (diagonal placement is not allowed)\n" +
+                " - A3 A2 A1 (must be in numerical order)\n" +
+          " - Exampes of valid coordinates:\n" +
+                " - A4 B4 C5\n" +
+                " - D2 D3"
+    puts
     puts
     puts "Here is how your board looks currently!"
     puts @player.board.render(true)
+    puts
     puts
   end
 
