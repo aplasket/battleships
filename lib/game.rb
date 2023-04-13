@@ -20,7 +20,7 @@ class Game
                                \/       \/          \/            \/     \/ 
 
     EOF
-    `say -r 150 "Welcome"`
+    `say -r 100 -v "Zarvox" "Welcome"`
     puts <<-'EOF'
                                              __          
                                            _/  |_  ____  
@@ -30,7 +30,7 @@ class Game
                                            
                                             
     EOF
-    `say -r 150 "to"`
+    `say -r 100 -v "Zarvox" "to"`
     puts <<-'EOF'
     __________    ___________________________.____     ___________ _________ ___ ___ ._____________ 
     \______   \  /  _  \__    ___/\__    ___/|    |    \_   _____//   _____//   |   \|   \______   \
@@ -40,7 +40,7 @@ class Game
             \/         \/                            \/        \/        \/       \/               
 
     EOF
-    `say -r 150 "Battleship!"`
+    `say -r 100 -v "Zarvox" "Battleship!"`
     puts <<-'EOF'
                                                   __/___            
                                             _____/______|           
@@ -101,13 +101,13 @@ class Game
                                                                         
       ---------------------------------------------------------------------
       EOF
-      `say -r 150 "Let's play"`
+      `say -r 100 -v "Zarvox" "Let's play"`
       sleep(1)
       puts
       play_game
     else 
       puts 'Ah! I knew you were scared! Muhaha!'
-      `say -r 150 "Goodbye"`
+      `say -r 100 -v "Zarvox" "Goodbye"`
       exit
     end
   end
@@ -119,21 +119,19 @@ class Game
     puts 'First, you must place your Cruiser on the board. ' +
     'Type in 3 valid coordinates in either a horizontal or vertical row'
     puts 'Example: A1 A2 A3'
-    `say -r 100 "Time to place your cruiser"`
+    `say -r 100 -v "Zarvox" "Time to place your cruiser"`
     player_placement(@player.cruiser)
     puts
     puts 'Place your Submarine! Type in 2 valid coordinates in a horizonal or vertical row.'
     puts 'Example: B1 B2:'
-    `say -r 150 "Now place your Submarine"`
+    `say -r 100 -v "Zarvox" "Now place your Submarine"`
     puts
     puts @player.board.render(true)
     2.times{puts}
     player_placement(@player.submarine)
     puts 
     puts '        Time to start the battle!'
-    `say -r 150 "Time to start the battle"`
-
-
+    `say -r 100 -v "Zarvox" "Time to start the battle"`
     puts
     play_turn
   end
@@ -156,7 +154,7 @@ class Game
     " - Exampes of valid coordinates:\n" +
     "   - A4 B4 C4\n" +
     "   - D2 D3"
-    `say -r 100 "Here are the rules and your current grid"`
+    `say -r 100 -v "Zarvox" "Here are the rules and your current grid"`
     2.times{puts}
     puts 'Here is how your board looks currently!'
     puts @player.board.render(true)
@@ -211,13 +209,13 @@ class Game
     3.times{puts}
     if @computer.board.cells[input].render == 'M'
       puts "Your shot on #{input} was a miss!"
-      `say -r 150 "Your shot was a miss"`
+      `say -r 100 -v "Zarvox" "Your shot was a miss"`
     elsif  @computer.board.cells[input].render == 'H'
       puts "Your shot on #{input} hit a ship!"
-      `say -r 150 "You hit a ship"`
+      `say -r 100 -v "Zarvox" "You hit a ship"`
     elsif @computer.board.cells[input].render == 'X'
       puts "Your shot on #{input} sunk a ship!"
-      `say -r 150 "You sunk a ship"`
+      `say -r 100 -v "Zarvox" "You sunk a ship"`
       @computer_sunken_ships += 1
       if there_is_a_winner == true
         end_game
@@ -242,13 +240,13 @@ class Game
   def computer_shot(coordinate_array)
     if @player.board.cells[coordinate_array].render == 'M'
       puts "The computer's shot on #{coordinate_array} was a miss!"
-      `say -r 150 "The computers shot was a miss"`
+      `say -r 100 -v "Zarvox" "The computers shot was a miss"`
     elsif  @player.board.cells[coordinate_array].render == 'H'
       puts "The computer's shot on #{coordinate_array} hit a ship!"
-      `say -r 150 "The computer hit a ship"`
+      `say -r 100 -v "Zarvox" "The computer hit a ship"`
     elsif @player.board.cells[coordinate_array].render == 'X'
       puts "The computer's shot on #{coordinate_array} sunk a ship!"
-      `say -r 150 "The computer sunk a ship"`
+      `say -r 100 -v "Zarvox" "The computer sunk a ship"`
       @player_sunken_ships += 1
       if there_is_a_winner == true
         sleep(0.8)
@@ -274,13 +272,11 @@ class Game
     sleep(1)
     if @computer_sunken_ships == 2
       puts 'You have won the game!'
-      `say -r 150 "Congrats! You have won the game!"`
-      print_board
+      `say -r 100 -v "Zarvox" "Congrats! You have won the game!"`
       end_game
     elsif @player_sunken_ships == 2
       puts 'You lost!'
-      `say -r 150 "I told you you'd probably lose! haha"`
-      print_board
+      `say -r 100 -v "Zarvox" "I told you you'd probably lose! haha"`
       end_game
     else
       false
@@ -291,7 +287,7 @@ class Game
   def end_game
     puts
     puts 'This battle has ended!'
-    `say -r 150 "The battle has ended"`
+    `say -r 100 -v "Zarvox" "The battle has ended"`
     sleep(2)
     puts <<-'EOF'
                                          ______
@@ -313,7 +309,7 @@ class Game
 
     EOF
     sleep(2)
-    `say -r 100 "New game in 3...2...1..."`
+    `say -r 100 -v "Zarvox" "New game in 3...2...1..."`
     main_menu
   end
 end
