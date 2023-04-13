@@ -151,7 +151,7 @@ class Game
     "   - A2 B3 C4 (diagonal placement is not allowed)\n" +
     "   - A3 A2 A1 (must be in numerical order)\n" +
     " - Exampes of valid coordinates:\n" +
-    "   - A4 B4 C5\n" +
+    "   - A4 B4 C4\n" +
     "   - D2 D3"
     `say -r 100 "Here are the rules and your current grid"`
     2.times{puts}
