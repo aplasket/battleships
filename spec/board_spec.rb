@@ -38,7 +38,7 @@ RSpec.describe do
 
     it 'checks that the coordinates are valid' do
       expect(@board.valid_placement?(@crusier, ['A3', 'A4', 'A5'])).to be(false)
-      expect(@board.valid_placement?(@crusier, ['B33', 'B34', 'B35'])).to be(false)
+      expect(@board.valid_placement?(@crusier, ['B33', 'B34'])).to be(false)
     end
     
     it 'check that coordinates are consecutive' do

@@ -83,7 +83,13 @@ class Game
     sleep(1)
     puts 'and want to quit...'
     input = gets.chomp.downcase
-    if input == 'p'
+
+    until input == 'p' || input == 'q' do
+      puts 'Please type "p" or "q" and "enter" to continue'
+      input = gets.chomp.downcase
+    end
+
+    if input == 'p' 
       puts <<-'EOF'
       ---------------------------------------------------------------------
          _      ______ _______ _  _____   _____  _           __     ___ 
@@ -99,13 +105,10 @@ class Game
       sleep(1)
       puts
       play_game
-    elsif input == 'q'
+    else 
       puts 'Ah! I knew you were scared! Muhaha!'
       `say -r 150 "Goodbye"`
-      #edge case for any other letter entered
       exit
-    else
-      puts 'Please type "p" or "q" and "enter" to continue'
     end
   end
 
@@ -255,7 +258,7 @@ class Game
       `say -r 150 "The computer sunk a ship"`
       @player_sunken_ships += 1
       if there_is_a_winner == true
-        sleep(1)
+        sleep(0.8)
         end_game
       end
     end
@@ -263,7 +266,7 @@ class Game
   end
 
   def there_is_a_winner
-    sleep(3)
+    sleep(1)
     puts
     if @computer_sunken_ships == 2
       puts 'You have won the game!'
@@ -304,7 +307,7 @@ class Game
 
     EOF
     sleep(2)
-    `say -r 150 "New game in 3...2...1..."`
+    `say -r 100 "New game in 3...2...1..."`
     main_menu
   end
 end
