@@ -83,7 +83,13 @@ class Game
     sleep(1)
     puts 'and want to quit...'
     input = gets.chomp.downcase
-    if input == 'p'
+
+    until input == 'p' || input == 'q' do
+      puts 'Please type "p" or "q" and "enter" to continue'
+      input = gets.chomp.downcase
+    end
+
+    if input == 'p' 
       puts <<-'EOF'
       ---------------------------------------------------------------------
          _      ______ _______ _  _____   _____  _           __     ___ 
@@ -99,13 +105,10 @@ class Game
       sleep(1)
       puts
       play_game
-    elsif input == 'q'
+    else 
       puts 'Ah! I knew you were scared! Muhaha!'
       `say -r 150 "Goodbye"`
-      #edge case for any other letter entered
       exit
-    else
-      puts 'Please type "p" or "q" and "enter" to continue'
     end
   end
 
@@ -116,7 +119,7 @@ class Game
     puts 'First, you must place your Cruiser on the board. ' +
     'Type in 3 valid coordinates in either a horizontal or vertical row'
     puts 'Example: A1 A2 A3'
-    `say -r 150 "Time to place your cruiser"`
+    `say -r 100 "Time to place your cruiser"`
     player_placement(@player.cruiser)
     puts
     puts 'Place your Submarine! Type in 2 valid coordinates in a horizonal or vertical row.'
@@ -151,9 +154,9 @@ class Game
     "   - A2 B3 C4 (diagonal placement is not allowed)\n" +
     "   - A3 A2 A1 (must be in numerical order)\n" +
     " - Exampes of valid coordinates:\n" +
-    "   - A4 B4 C5\n" +
+    "   - A4 B4 C4\n" +
     "   - D2 D3"
-    `say -r 150 "Here are the rules and your current grid"`
+    `say -r 100 "Here are the rules and your current grid"`
     2.times{puts}
     puts 'Here is how your board looks currently!'
     puts @player.board.render(true)
@@ -174,11 +177,11 @@ class Game
   
   def player_placement(ship)
     input = gets.chomp.upcase
-    coordinate_array = input.split(" ")
+    coordinate_array = input.split(' ')
     until @player.board.valid_placement?(ship, coordinate_array) do
       puts 'Those are invalid coordinates. Please try again:'
       input = gets.chomp.upcase
-      coordinate_array = input.split(" ")
+      coordinate_array = input.split(' ')
     end
     puts
     puts "Huzzah! You've placed your #{ship.name}!"
@@ -255,7 +258,7 @@ class Game
       `say -r 150 "The computer sunk a ship"`
       @player_sunken_ships += 1
       if there_is_a_winner == true
-        sleep(1)
+        sleep(0.8)
         end_game
       end
     end
@@ -263,7 +266,7 @@ class Game
   end
 
   def there_is_a_winner
-    sleep(3)
+    sleep(1)
     puts
     if @computer_sunken_ships == 2
       puts 'You have won the game!'
@@ -304,7 +307,7 @@ class Game
 
     EOF
     sleep(2)
-    `say -r 150 "New game in 3...2...1..."`
+    `say -r 100 "New game in 3...2...1..."`
     main_menu
   end
 end
