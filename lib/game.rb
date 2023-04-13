@@ -190,14 +190,7 @@ class Game
 
   def play_turn
     until there_is_a_winner do
-      puts '===============COMPUTER BOARD==============='
-      puts @computer.board.render
-      puts
-      puts '=================YOUR BOARD================='
-      puts @player.board.render(true)
-      puts
-      puts '(S = Ship, H = Hit, M = Miss, X = Sunk Ship)'
-      puts
+      print_board
       puts 'It is your turn. Pick one coordinate on the computers board to fire upon:'
       player_fire_upon
       computer_fire_upon
@@ -265,16 +258,29 @@ class Game
     2.times{puts}
   end
 
+  def print_board
+    puts
+    puts '===============COMPUTER BOARD==============='
+    puts @computer.board.render
+    puts
+    puts '=================YOUR BOARD================='
+    puts @player.board.render(true)
+    puts
+    puts '(S = Ship, H = Hit, M = Miss, X = Sunk Ship)'
+    puts
+  end
+
   def there_is_a_winner
     sleep(1)
-    puts
     if @computer_sunken_ships == 2
       puts 'You have won the game!'
       `say -r 150 "Congrats! You have won the game!"`
+      print_board
       end_game
     elsif @player_sunken_ships == 2
       puts 'You lost!'
       `say -r 150 "I told you you'd probably lose! haha"`
+      print_board
       end_game
     else
       false
