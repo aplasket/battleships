@@ -80,6 +80,10 @@ RSpec.describe do
       expect(cell_3.ship == cell_2.ship).to be(true)
     end
 
+    it 'can place a ship on the board' do
+      expect(@board.place(@cruiser, ['A1', 'A2', 'A3'])).to eq(@cruiser)
+    end
+
     it 'ensures ship placements do not overlap' do
       @board.place(@cruiser, ['A1', 'A2', 'A3'])
       expect(@board.valid_placement?(@submarine, ['A1', 'B1'])).to be(false)

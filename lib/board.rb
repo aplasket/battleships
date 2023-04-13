@@ -75,6 +75,7 @@ class Board
         @cells[coordinate].place_ship(ship)
       end
     end
+    ship
   end
 
   def render (argument = false)
