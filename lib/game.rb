@@ -116,7 +116,7 @@ class Game
     puts 'First, you must place your Cruiser on the board. ' +
     'Type in 3 valid coordinates in either a horizontal or vertical row'
     puts 'Example: A1 A2 A3'
-    `say -r 150 "Time to place your cruiser"`
+    `say -r 100 "Time to place your cruiser"`
     player_placement(@player.cruiser)
     puts
     puts 'Place your Submarine! Type in 2 valid coordinates in a horizonal or vertical row.'
@@ -153,7 +153,7 @@ class Game
     " - Exampes of valid coordinates:\n" +
     "   - A4 B4 C5\n" +
     "   - D2 D3"
-    `say -r 150 "Here are the rules and your current grid"`
+    `say -r 100 "Here are the rules and your current grid"`
     2.times{puts}
     puts 'Here is how your board looks currently!'
     puts @player.board.render(true)
@@ -174,11 +174,11 @@ class Game
   
   def player_placement(ship)
     input = gets.chomp.upcase
-    coordinate_array = input.split(" ")
+    coordinate_array = input.split(' ')
     until @player.board.valid_placement?(ship, coordinate_array) do
       puts 'Those are invalid coordinates. Please try again:'
       input = gets.chomp.upcase
-      coordinate_array = input.split(" ")
+      coordinate_array = input.split(' ')
     end
     puts
     puts "Huzzah! You've placed your #{ship.name}!"
