@@ -1,6 +1,8 @@
 class Game
   attr_reader :computer,
-              :player
+              :player,
+              :player_sunken_ships,
+              :computer_sunken_ships
 
   def initialize
     @computer = Computer.new
