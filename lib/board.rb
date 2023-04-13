@@ -26,10 +26,15 @@ class Board
   end
 
   def valid_placement?(ship, coordinates)
+    return false unless checks_valid_coordinates(coordinates)
     return false unless ship.length == coordinates.count
     return false unless consecutive_check(ship, coordinates)
     return false unless not_overlapping(coordinates)
     true
+  end
+
+  def checks_valid_coordinates(coordinates)
+    coordinates.all? {|coordinate| valid_coordinate?(coordinate)}
   end
   
   def consecutive_check(ship, coordinates)
